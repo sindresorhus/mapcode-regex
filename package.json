@@ -1,0 +1,48 @@
+{
+  "name": "mapcode-regex",
+  "version": "0.0.0",
+  "description": "Regular expression for matching mapcodes",
+  "license": "MIT",
+  "repository": "sindresorhus/mapcode-regex",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js",
+    "prepublish": "node generate.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "mapcode",
+    "mapcodes",
+    "map",
+    "code",
+    "lat",
+    "long",
+    "longitude",
+    "latitude",
+    "location",
+    "address",
+    "position",
+    "regex",
+    "regexp",
+    "re",
+    "match",
+    "matching",
+    "find"
+  ],
+  "devDependencies": {
+    "array-uniq": "^0.1.1",
+    "ava": "0.0.3",
+    "comma-separated-values": "^3.2.1",
+    "download": "^0.1.18",
+    "tempfile": "^0.1.3"
+  }
+}
