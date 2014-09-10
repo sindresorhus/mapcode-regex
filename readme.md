@@ -28,8 +28,6 @@ mapcodeRegex().exec('This is a mapcode FRA 4J.Q2')[0];
 //=> ['FRA 4J.Q2', 'Hawaii ZSR.3J']
 ```
 
-*It's a function so you can create multiple instances. Regexes with the global flag will have the `.lastIndex` property changed for each call to methods on the instance. Therefore reusing the instance with multiple calls will not work as expected for `.test()`.*
-
 
 ## Tip
 
