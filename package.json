@@ -42,7 +42,6 @@
     "array-uniq": "^1.0.1",
     "ava": "0.0.4",
     "comma-separated-values": "^3.2.1",
-    "tempfile": "^1.0.0",
-    "download": "^0.1.18"
+    "download": "^4.0.1"
   }
 }

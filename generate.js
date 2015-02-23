@@ -1,35 +1,31 @@
 'use strict';
 var fs = require('fs');
-var path = require('path');
-var download = require('download');
-var tempfile = require('tempfile');
+var Download = require('download');
 var CSV = require('comma-separated-values');
 var arrayUniq = require('array-uniq');
-var tmp = tempfile();
 
-var DB_URL = 'http://www.mapcode.com/kader/isotables.zip';
+new Download({extract: true})
+	.get('http://www.mapcode.com/kader/isotables.zip')
+	.run(function (err, files) {
+		var data = files[0].contents.toString();
+		var items = new CSV(data, {header: true}).parse();
+		var ret = [];
 
-download(DB_URL, tmp, {extract: true}).on('close', function () {
-	var data = fs.readFileSync(path.join(tmp, 'isotable.csv'), 'utf8');
-	var items = new CSV(data, {header: true}).parse();
+		items.forEach(function (el) {
+			if (el.Territory !== '') {
+				ret.push(el.Territory);
+			}
 
-	var ret = [];
+			if (el['Local code'] !== '') {
+				ret.push(el['Local code']);
+			}
 
-	items.forEach(function (el) {
-		if (el.Territory !== '') {
-			ret.push(el.Territory);
-		}
+			if (el['Full code'] !== '') {
+				ret.push(el['Full code']);
+			}
+		});
 
-		if (el['Local code'] !== '') {
-			ret.push(el['Local code']);
-		}
+		var out = '\'use strict\';\nmodule.exports = function () {\n\treturn /(?:(' + arrayUniq(ret).sort().join('|') + ') )?[A-Z0-9]{2,}\.[A-Z0-9]{2,}/g;\n};';
 
-		if (el['Full code'] !== '') {
-			ret.push(el['Full code']);
-		}
+		fs.writeFileSync('index.js', out);
 	});
-
-	var out = '\'use strict\';\nmodule.exports = function () {\n\treturn /(?:(' + arrayUniq(ret).sort().join('|') + ') )?[A-Z0-9]{2,}\.[A-Z0-9]{2,}/g;\n};';
-
-	fs.writeFileSync('index.js', out);
-});
