@@ -25,7 +25,7 @@ new Download({extract: true})
 			}
 		});
 
-		var out = '\'use strict\';\nmodule.exports = function () {\n\treturn /(?:(' + arrayUniq(ret).sort().join('|') + ') )?[A-Z0-9]{2,}\.[A-Z0-9]{2,}/g;\n};';
+		var out = '\'use strict\';\nmodule.exports = function () {\n\treturn /(?:(' + arrayUniq(ret).sort().join('|') + ') )?[A-Z0-9]{2,5}\.[A-Z0-9]{2,4}/g;\n};';
 
 		fs.writeFileSync('index.js', out);
 	});
