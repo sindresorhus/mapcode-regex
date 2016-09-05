@@ -23,7 +23,7 @@ download('http://www.mapcode.com/kader/isotables.zip', {extract: true}).then(fun
 		}
 	});
 
-	var out = '\'use strict\';\nmodule.exports = function () {\n\treturn /(?:(' + arrayUniq(ret).sort().join('|') + ') )?[A-Z0-9]{2,5}\.[A-Z0-9]{2,4}/g;\n};';
+	var out = '\'use strict\';\nmodule.exports = function () {\n\treturn /(?:(' + arrayUniq(ret).sort().join('|') + ') )?[A-Z0-9]{2,5}.[A-Z0-9]{2,4}/g;\n};\n';
 
 	fs.writeFileSync('index.js', out);
 });
