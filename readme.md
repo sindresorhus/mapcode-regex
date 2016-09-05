@@ -13,7 +13,7 @@ $ npm install --save mapcode-regex
 ## Usage
 
 ```js
-var mapcodeRegex = require('mapcode-regex');
+const mapcodeRegex = require('mapcode-regex');
 
 mapcodeRegex().test('4J.Q2');
 //=> true

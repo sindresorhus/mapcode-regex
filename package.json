@@ -10,7 +10,7 @@
     "url": "http://sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && ava",
@@ -44,5 +44,8 @@
     "comma-separated-values": "^3.2.1",
     "download": "^5.0.2",
     "xo": "*"
+  },
+  "xo": {
+    "esnext": true
   }
 }
