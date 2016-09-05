@@ -1,8 +1,7 @@
-'use strict';
-var test = require('ava');
-var mapcodeRegex = require('./');
+import test from 'ava';
+import m from './';
 
-var fixture = [
+const fixtures = [
 	'4J.Q2',
 	'France 4J.Q2',
 	'FRA 4J.Q2',
@@ -14,10 +13,10 @@ var fixture = [
 	'BR-AM 4J.Q2'
 ];
 
-test('should match mapcodes', function (t) {
-	fixture.forEach(function (el) {
-		t.assert(mapcodeRegex().test(el), el);
-	});
+test('match mapcodes', t => {
+	for (const x of fixtures) {
+		t.true(m().test(x));
+	}
 
-	t.assert(mapcodeRegex().exec('Foo BR-AM 4J.Q2 Bar')[0] === 'BR-AM 4J.Q2');
+	t.is(m().exec('Foo BR-AM 4J.Q2 Bar')[0], 'BR-AM 4J.Q2');
 });
