@@ -10,11 +10,11 @@
     "url": "http://sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
-    "test": "node test.js",
-    "prepublish": "node generate.js"
+    "test": "xo && ava",
+    "prepublish": "node make.js"
   },
   "files": [
     "index.js"
@@ -40,8 +40,12 @@
   ],
   "devDependencies": {
     "array-uniq": "^1.0.1",
-    "ava": "0.0.4",
-    "comma-separated-values": "^3.2.1",
-    "download": "^4.0.1"
+    "ava": "*",
+    "download": "^5.0.2",
+    "neat-csv": "^2.1.0",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true
   }
 }

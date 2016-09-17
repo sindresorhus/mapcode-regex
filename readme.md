@@ -13,7 +13,7 @@ $ npm install --save mapcode-regex
 ## Usage
 
 ```js
-var mapcodeRegex = require('mapcode-regex');
+const mapcodeRegex = require('mapcode-regex');
 
 mapcodeRegex().test('4J.Q2');
 //=> true
@@ -36,4 +36,4 @@ You can use [clone-regexp](https://github.com/sindresorhus/clone-regexp) to chan
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
