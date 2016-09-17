@@ -1,29 +1,29 @@
 'use strict';
 const fs = require('fs');
 const download = require('download');
-const CSV = require('comma-separated-values');
+const neatCsv = require('neat-csv');
 const arrayUniq = require('array-uniq');
 
-download('http://www.mapcode.com/kader/isotables.zip', {extract: true}).then(files => {
-	const data = files[0].data.toString();
-	const items = new CSV(data, {header: true}).parse();
-	const ret = [];
+download('http://www.mapcode.com/kader/isotables.zip', {extract: true})
+	.then(files => neatCsv(files[0].data))
+	.then(data => {
+		const ret = [];
 
-	for (const x of items) {
-		if (x.Territory !== '') {
-			ret.push(x.Territory);
+		for (const x of data) {
+			if (x.Territory !== '') {
+				ret.push(x.Territory);
+			}
+
+			if (x['Local code'] !== '') {
+				ret.push(x['Local code']);
+			}
+
+			if (x['Full code'] !== '') {
+				ret.push(x['Full code']);
+			}
 		}
 
-		if (x['Local code'] !== '') {
-			ret.push(x['Local code']);
-		}
+		const out = `'use strict';\nmodule.exports = () => {\n\treturn /(?:(${arrayUniq(ret).sort().join('|')}) )?[ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz0-9]{2,}\.[ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz0-9]{2,}(-[0-9]{1,8})?/g;\n};\n`;
 
-		if (x['Full code'] !== '') {
-			ret.push(x['Full code']);
-		}
-	}
-
-	const out = `'use strict';\nmodule.exports = () => {\n\treturn /(?:(${arrayUniq(ret).sort().join('|')}) )?[ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz0-9]{2,}\.[ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz0-9]{2,}(-[0-9]{1,8})?/g;\n};\n`;
-
-	fs.writeFileSync('index.js', out);
-});
+		fs.writeFileSync('index.js', out);
+	});

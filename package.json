@@ -41,8 +41,8 @@
   "devDependencies": {
     "array-uniq": "^1.0.1",
     "ava": "*",
-    "comma-separated-values": "^3.2.1",
     "download": "^5.0.2",
+    "neat-csv": "^2.1.0",
     "xo": "*"
   },
   "xo": {
