@@ -10,7 +10,8 @@ const fixtures = [
 	'Alaska 81.J4W',
 	'Hawaii ZSR.3J',
 	'Nederland 28.CK',
-	'BR-AM 4J.Q2'
+	'BR-AM 4J.Q2',
+	'Netherlands 49.4V-K2'
 ];
 
 test('match mapcodes', t => {
@@ -19,4 +20,5 @@ test('match mapcodes', t => {
 	}
 
 	t.is(m().exec('Foo BR-AM 4J.Q2 Bar')[0], 'BR-AM 4J.Q2');
+	t.is(m().exec('Foo BR-AM 4J.Q2-123 Bar')[0], 'BR-AM 4J.Q2-123');
 });

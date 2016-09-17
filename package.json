@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "xo && ava",
-    "prepublish": "node generate.js"
+    "prepublish": "node make.js"
   },
   "files": [
     "index.js"

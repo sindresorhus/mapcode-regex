@@ -36,4 +36,4 @@ You can use [clone-regexp](https://github.com/sindresorhus/clone-regexp) to chan
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
