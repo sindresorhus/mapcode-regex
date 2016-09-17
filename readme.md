@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save mapcode-regex
 ```
 
@@ -22,7 +22,7 @@ mapcodeRegex().test('Hawaii ZSR.3J');
 //=> true
 
 mapcodeRegex().exec('This is a mapcode FRA 4J.Q2')[0];
-//=> FRA 4J.Q2
+//=> 'FRA 4J.Q2'
 
 'Multiple FRA 4J.Q2 Hawaii ZSR.3J mapcodes'.match(mapcodeRegex());
 //=> ['FRA 4J.Q2', 'Hawaii ZSR.3J']
@@ -32,6 +32,11 @@ mapcodeRegex().exec('This is a mapcode FRA 4J.Q2')[0];
 ## Tip
 
 You can use [clone-regexp](https://github.com/sindresorhus/clone-regexp) to change the flags. In this case maybe remove the global flag.
+
+
+## Related
+
+- [mapcode](https://github.com/sindresorhus/mapcode) - Find mapcodes in a string
 
 
 ## License
