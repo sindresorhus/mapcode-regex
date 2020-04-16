@@ -1,14 +1,12 @@
-# mapcode-regex [![Build Status](https://travis-ci.org/sindresorhus/mapcode-regex.svg?branch=master)](https://travis-ci.org/sindresorhus/mapcode-regex)
+# mapcode-regex [![Build Status](https://travis-ci.com/sindresorhus/mapcode-regex.svg?branch=master)](https://travis-ci.com/sindresorhus/mapcode-regex)
 
-> Regular expression for matching [mapcodes](http://www.mapcode.com/aboutmc.html)
-
+> Regular expression for matching [mapcodes](https://www.mapcode.com/about)
 
 ## Install
 
 ```
-$ npm install --save mapcode-regex
+$ npm install mapcode-regex
 ```
-
 
 ## Usage
 
@@ -28,17 +26,10 @@ mapcodeRegex().exec('This is a mapcode FRA 4J.Q2')[0];
 //=> ['FRA 4J.Q2', 'Hawaii ZSR.3J']
 ```
 
-
 ## Tip
 
 You can use [clone-regexp](https://github.com/sindresorhus/clone-regexp) to change the flags. In this case maybe remove the global flag.
 
-
 ## Related
 
 - [mapcode](https://github.com/sindresorhus/mapcode) - Find mapcodes in a string
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

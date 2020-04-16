@@ -4,7 +4,8 @@ const download = require('download');
 const neatCsv = require('neat-csv');
 const arrayUniq = require('array-uniq');
 
-download('http://www.mapcode.com/kader/isotables.zip', {extract: true})
+// From https://www.mapcode.com/documentation
+download('https://s3.eu-central-1.amazonaws.com/download.mapcode.com/kader/isotables.zip', {extract: true})
 	.then(files => neatCsv(files[0].data))
 	.then(data => {
 		const ret = [];
