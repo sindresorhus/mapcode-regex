@@ -1,4 +1,4 @@
-# mapcode-regex [![Build Status](https://travis-ci.com/sindresorhus/mapcode-regex.svg?branch=master)](https://travis-ci.com/sindresorhus/mapcode-regex)
+# mapcode-regex
 
 > Regular expression for matching [mapcodes](https://www.mapcode.com/about)
 
