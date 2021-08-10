@@ -1,5 +1,5 @@
 import test from 'ava';
-import m from './';
+import mapcodeRegex from './index.js';
 
 const fixtures = [
 	'4J.Q2',
@@ -11,14 +11,14 @@ const fixtures = [
 	'Hawaii ZSR.3J',
 	'Nederland 28.CK',
 	'BR-AM 4J.Q2',
-	'Netherlands 49.4V-K2'
+	'Netherlands 49.4V-K2',
 ];
 
 test('match mapcodes', t => {
-	for (const x of fixtures) {
-		t.true(m().test(x));
+	for (const fixture of fixtures) {
+		t.true(mapcodeRegex().test(fixture));
 	}
 
-	t.is(m().exec('Foo BR-AM 4J.Q2 Bar')[0], 'BR-AM 4J.Q2');
-	t.is(m().exec('Foo BR-AM 4J.Q2-123 Bar')[0], 'BR-AM 4J.Q2-123');
+	t.is(mapcodeRegex().exec('Foo BR-AM 4J.Q2 Bar')[0], 'BR-AM 4J.Q2');
+	t.is(mapcodeRegex().exec('Foo BR-AM 4J.Q2-123 Bar')[0], 'BR-AM 4J.Q2-123');
 });

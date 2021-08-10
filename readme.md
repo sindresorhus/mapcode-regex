@@ -11,7 +11,7 @@ $ npm install mapcode-regex
 ## Usage
 
 ```js
-const mapcodeRegex = require('mapcode-regex');
+import mapcodeRegex from 'mapcode-regex';
 
 mapcodeRegex().test('4J.Q2');
 //=> true
@@ -28,7 +28,7 @@ mapcodeRegex().exec('This is a mapcode FRA 4J.Q2')[0];
 
 ## Tip
 
-You can use [clone-regexp](https://github.com/sindresorhus/clone-regexp) to change the flags. In this case maybe remove the global flag.
+You can use [clone-regexp](https://github.com/sindresorhus/clone-regexp) to change the flags. In this case, maybe remove the global flag.
 
 ## Related
 

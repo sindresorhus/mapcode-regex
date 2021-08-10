@@ -1,30 +1,33 @@
-'use strict';
-const fs = require('fs');
-const download = require('download');
-const neatCsv = require('neat-csv');
-const arrayUniq = require('array-uniq');
+import fs from 'node:fs';
+import download from 'download';
+import neatCsv from 'neat-csv';
+import arrayUniq from 'array-uniq';
 
-// From https://www.mapcode.com/documentation
-download('https://s3.eu-central-1.amazonaws.com/download.mapcode.com/kader/isotables.zip', {extract: true})
-	.then(files => neatCsv(files[0].data))
-	.then(data => {
-		const ret = [];
+(async () => {
+	// From https://www.mapcode.com/documentation
+	const files = await download('https://s3.eu-central-1.amazonaws.com/download.mapcode.com/kader/isotables.zip', {extract: true});
 
-		for (const x of data) {
-			if (x.Territory !== '') {
-				ret.push(x.Territory);
-			}
+	const data = await neatCsv(files[0].data);
 
-			if (x['Local code'] !== '') {
-				ret.push(x['Local code']);
-			}
+	const items = [];
 
-			if (x['Full code'] !== '') {
-				ret.push(x['Full code']);
-			}
+	for (const item of data) {
+		if (item.Territory !== '') {
+			items.push(item.Territory);
 		}
 
-		const out = `'use strict';\nmodule.exports = () => (/(?:(${arrayUniq(ret).sort().join('|')}) )?[ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz0-9]{2,}\.[ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz0-9]{2,}(-[0-9]{1,8})?/g);\n`;
+		if (item['Local code'] !== '') {
+			items.push(item['Local code']);
+		}
 
-		fs.writeFileSync('index.js', out);
-	});
+		if (item['Full code'] !== '') {
+			items.push(item['Full code']);
+		}
+	}
+
+	const regex = `/(?:(${arrayUniq(items).sort().join('|')}) )?[ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz\\d]{2,}\\.[ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqrstuvwxyz\\d]{2,}(-\\d{1,8})?/g`;
+
+	const source = `export default function mapcodeRegex() {\n\treturn ${regex};\n}\n`;
+
+	fs.writeFileSync('index.js', source);
+})();
