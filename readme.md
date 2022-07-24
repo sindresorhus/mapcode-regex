@@ -4,8 +4,8 @@
 
 ## Install
 
-```
-$ npm install mapcode-regex
+```sh
+npm install mapcode-regex
 ```
 
 ## Usage
@@ -25,6 +25,12 @@ mapcodeRegex().exec('This is a mapcode FRA 4J.Q2')[0];
 'Multiple FRA 4J.Q2 Hawaii ZSR.3J mapcodes'.match(mapcodeRegex());
 //=> ['FRA 4J.Q2', 'Hawaii ZSR.3J']
 ```
+
+## Important
+
+If you run the regex against untrusted user input in a server context, you should [give it a timeout](https://github.com/sindresorhus/super-regex).
+
+**I do not consider ReDoS a valid vulnerability for this package.**
 
 ## Tip
 
